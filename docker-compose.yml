@@ -14,4 +14,26 @@ services:
     volumes:
        - ./projects/:/var/www/html/
   # mysql
+
+  mysql:
+    image: mysql:8.0
+    
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: learn_docker
+      
+
   # redis
+
+
+
+volumes:
+  mysqldata:
